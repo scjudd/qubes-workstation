@@ -1,0 +1,7 @@
+dom0_user:
+  username: spencer
+  group: spencer
+
+domU_user:
+  username: user
+  group: user
