@@ -1,0 +1,76 @@
+[user]
+	name = Spencer Judd
+	email = spencercjudd@gmail.com
+	signingKey = E07176835BB76530200EE2D463F4039477D6CA8D
+
+[commit]
+	# Automatically sign all commits.
+	gpgSign = true
+
+# Aliases that I use so often I forget they're not common defaults.
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	lol = log --graph --decorate=auto --pretty=oneline --abbrev-commit --abbrev=8
+	start = !git init && git commit --allow-empty -m 'Initial commit'
+	root = !pwd
+	dry = "!f() { git merge-tree $(git merge-base $1 $2) $1 $2; }; f"
+
+[push]
+	# Default behavior of `git push`
+	#
+	# Setting this to `simple` causes git to push the current branch to its
+	# upstream branch, and refuse to do so if the upstream branch's name
+	# differs from the local branch's. It is considered the safest option
+	# and the default as of git 2.0.
+	default = simple
+
+# Colors that I've gotten used to.
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[filter "lfs"]
+	# Declare that this filter must succeed in order for the content to be
+	# usable. We can't do meaningful work with LFS pointers if LFS fails,
+	# so it makes sense to set this.
+	required = true
+
+	# git "clean" filters run when a file is added to the staging area. LFS
+	# uses the opportunity to write the large file to a git object and
+	# change the file in the index to a pointer.
+	clean = git-lfs clean -- %f
+
+	# git "smudge" filters run when a file is checked out from the staging
+	# area. LFS uses the opportunity to pull the object from the server and
+	# replace the pointer file with its LFS contents.
+	#
+	# I pass `--skip` because I don't want this to happen by default,
+	# preferring to run `git lfs fetch` and `git lfs checkout` manually.
+	smudge = git-lfs smudge --skip -- %f
+
+	# I haven't really been able to find any documentation on the process
+	# filter, but I do know that LFS sets this up by default and that I
+	# need to pass `--skip` to the command if I want to avoid automatic
+	# downloading of large files.
+	process = git-lfs filter-process --skip
+
+# This, plus the following entries in a repo's `.gitattributes`, enables
+# showing diffs for encrypted files:
+#
+# 	*.gpg filter=gpg diff=gpg
+# 	*.asc filter=gpg diff=gpg
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt

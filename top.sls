@@ -7,4 +7,5 @@ user:
     - common-packages
     - gnome-terminal
   personal:
+    - git
     - gnupg
