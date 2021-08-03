@@ -10,6 +10,7 @@ cursor-colors-set=false
 font='Iosevka Term 14'
 foreground-color='rgb(197,209,235)'
 palette=['rgb(22,31,48)', 'rgb(241,36,70)', 'rgb(159,239,0)', 'rgb(255,175,0)', 'rgb(1,127,242)', 'rgb(152,108,232)', 'rgb(18,160,161)', 'rgb(197,209,235)', 'rgb(85,96,114)', 'rgb(241,36,70)', 'rgb(159,239,0)', 'rgb(255,175,0)', 'rgb(1,127,242)', 'rgb(152,108,232)', 'rgb(18,160,161)', 'rgb(197,209,235)']
+scrollbar-policy='never'
 use-system-font=false
 use-theme-colors=false
 visible-name='HTB'
