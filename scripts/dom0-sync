@@ -1,0 +1,13 @@
+#!/bin/bash
+set -ueo pipefail
+
+SOURCE_QUBE=personal
+SOURCE_DIR=/home/user/qubes-workstation
+TARGET_DIR=/srv/user_salt
+
+echo "Replacing '$TARGET_DIR' with the contents of '$SOURCE_DIR' from the '$SOURCE_QUBE' qube."
+
+rm -rf $TARGET_DIR/*
+qvm-run --pass-io $SOURCE_QUBE "tar -c -f- -C $SOURCE_DIR ." | tar -x -f- -C $TARGET_DIR
+
+echo "Done! Run 'qubesctl --all state.highstate' to (re-)configure Qubes OS."

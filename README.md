@@ -5,22 +5,26 @@ This repo captures all of my customizations to a vanilla Qubes OS 4.0.4 install 
 
 ## Installation
 
-Clone the repo in an AppVM, edit `config.yaml` as appropriate, then run the below script to sync the configuration with dom0. To apply, run `qubesctl --all state.highstate`.
+From an AppVM (e.g., 'personal'):
+
+* `$REPO_URL` is the URL of this repository (for example, 'https://github.com/scjudd/qubes-workstation.git')
 
 ```bash
-#!/bin/bash
-set -ueo pipefail
+git clone $REPO_URL
+vim qubes-workstation/config.yaml       # make sure user settings are correct
+vim qubes-workstation/scripts/dom0-sync # make sure variables are correct
+```
 
-SOURCE_QUBE=personal
-SOURCE_DIR=/home/user/qubes-workstation
-TARGET_DIR=/srv/user_salt
+From dom0:
 
-echo "Replacing '$TARGET_DIR' with the contents of '$SOURCE_DIR' from the '$SOURCE_QUBE' qube."
+* `$SOURCE_QUBE` is the Qube where you've cloned the repo (for example, 'personal')
+* `$REPO_PATH` is the path to the cloned repo within `$SOURCE_QUBE` (for example, '/home/user/qubes-workstation')
 
-rm -rf $TARGET_DIR/*
-qvm-run --pass-io $SOURCE_QUBE "tar -c -f- -C $SOURCE_DIR ." | tar -x -f- -C $TARGET_DIR
-
-echo "Done! Run 'qubesctl --all state.highstate' to (re-)configure Qubes OS."
+```bash
+qvm-run --pass-io $SOURCE_QUBE "cat $REPO_PATH/scripts/dom0-sync" > qubes-workstation-dom0-sync
+chmod +x qubes-workstation-dom0-sync
+sudo ./qubes-workstation-dom0-sync
+sudo qubesctl --all state.highstate
 ```
 
 
