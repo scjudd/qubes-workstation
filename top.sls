@@ -10,6 +10,7 @@ user:
   fedora-32-infosec:
     - common-packages
     - gnome-terminal
+    - ghidra
   personal:
     - git
     - gnupg
