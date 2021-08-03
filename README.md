@@ -33,6 +33,15 @@ sudo qubesctl --all state.highstate
 The output from Salt for a given Qube can be found under `/var/log/qubes/mgmt-<qube name>.log` in dom0.
 
 
+## Reinstalling a template
+
+If you have deleted a standard template, or would like to reset it to its default state, you can do so with the `qubes-dom0-update` command. For example, to reset the `fedora-32` template to its default state:
+
+```bash
+sudo qubes-dom0-update --action=reinstall qubes-template-fedora-32
+```
+
+
 ## Librem 14 troubleshooting
 
 To get the Librem 14 to consistently charge correctly, I had to flash a newer EC firmware and install the librem-ec-acpi kernel module with DKMS.
