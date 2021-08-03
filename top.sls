@@ -3,7 +3,8 @@ user:
   dom0:
     - dom0-desktop
     - librem-ec-acpi
-  fedora-32:
+    - qube-vms
+  fedora-32-customized:
     - common-packages
     - gnome-terminal
   personal:
