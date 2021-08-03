@@ -12,3 +12,10 @@ create-personal-vm:
       - template: fedora-32-customized
     - prefs:
       - template: fedora-32-customized
+
+fedora-32-infosec-template:
+  qvm.vm:
+    - name: fedora-32-infosec
+    - clone:
+      - source: fedora-32
+      - label: black

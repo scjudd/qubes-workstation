@@ -7,6 +7,9 @@ user:
   fedora-32-customized:
     - common-packages
     - gnome-terminal
+  fedora-32-infosec:
+    - common-packages
+    - gnome-terminal
   personal:
     - git
     - gnupg
