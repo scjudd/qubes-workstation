@@ -65,3 +65,15 @@ sudo ./purism_ectool info
 This module is included with PureOS, but it is not currently packaged for Qubes. Besides fixing charging issues (together with the EC firmware update above), it adds a bunch of controls for LEDs and such.
 
 This currently is done automatically for dom0, but can be disabled by commenting out the `- librem-ec-acpi` line in `top.sls`.
+
+
+### Battery charge controller tuning
+
+I usually have my laptop plugged into AC power, so I've configured the charge controller to start charging when the battery is below 40% charged and to stop once it hits 80%. This should increase the lifespan of the battery.
+
+From dom0, as root:
+
+```bash
+echo 40 > /sys/class/power_supply/BAT0/charge_control_start_threshold
+echo 80 > /sys/class/power_supply/BAT0/charge_control_end_threshold
+```
