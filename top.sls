@@ -9,3 +9,4 @@ user:
   personal:
     - git
     - gnupg
+    - vim

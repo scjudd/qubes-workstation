@@ -1,0 +1,32 @@
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'editorconfig/editorconfig-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jamessan/vim-gnupg'
+Plug 'nathanaelkane/vim-indent-guides'
+call plug#end()
+
+syntax enable
+set scrolloff=5
+
+" Needed for vim-indent-guides to work
+colorscheme default
+set background=dark
+
+" Automatic formatting
+let g:go_fmt_command='goimports'
+let g:rustfmt_autosave=1
+let g:terraform_fmt_on_save=1
+
+" Indent guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
