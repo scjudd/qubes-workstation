@@ -4,6 +4,8 @@ user:
     - dom0-desktop
     - librem-ec-acpi
     - qube-vms
+  fedora-32:
+    - gnome-terminal
   fedora-32-customized:
     - common-packages
     - gnome-terminal
