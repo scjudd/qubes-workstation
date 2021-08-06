@@ -11,6 +11,7 @@ user:
     - common-packages
     - gnome-terminal
     - ghidra
+    - burpsuite
   personal:
     - git
     - gnupg
