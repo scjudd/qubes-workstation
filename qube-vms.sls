@@ -19,3 +19,15 @@ fedora-32-infosec-template:
     - clone:
       - source: fedora-32
       - label: black
+
+infosec-dvm:
+  qvm.vm:
+    - present:
+      - template: fedora-32-infosec
+      - label: red
+    - prefs:
+      - template: fedora-32-infosec
+      - template-for-dispvms: true
+    - features:
+      - enable:
+        - appmenus-dispvm
