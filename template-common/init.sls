@@ -1,6 +1,13 @@
 include:
   - fonts
 
+common-packages:
+  pkg.installed:
+    - pkgs:
+      - ack
+      - htop
+      - pass
+
 gnome-terminal:
   pkg.installed
 
@@ -9,7 +16,7 @@ gnome-terminal:
     - pkg: gnome-terminal
     - file: fonts
   file.managed:
-    - source: salt://files/dconf/gnome-terminal
+    - source: salt://template-common/files/dconf/gnome-terminal
     - dir_mode: 755
     - mode: 644
     - user: root

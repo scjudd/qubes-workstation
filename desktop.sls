@@ -5,16 +5,16 @@ include:
 
 Xresources:
   file.managed:
-    - name: /home/{{ config.dom0_user.username }}/.Xresources
-    - source: salt://files/X11/Xresources
+    - name: /home/{{ config.username }}/.Xresources
+    - source: salt://files/desktop/X11/Xresources
     - mode: 644
-    - user: {{ config.dom0_user.username }}
-    - group: {{ config.dom0_user.group }}
+    - user: {{ config.username }}
+    - group: {{ config.group }}
 
 trackpad-config:
   file.managed:
     - name: /etc/X11/xorg.conf.d/90-trackpad.conf
-    - source: salt://files/X11/xorg.conf.d/90-trackpad.conf
+    - source: salt://files/desktop/X11/xorg.conf.d/90-trackpad.conf
     - mode: 644
     - user: root
     - group: root
@@ -30,34 +30,34 @@ i3:
 
 i3-config:
   file.managed:
-    - name: /home/{{ config.dom0_user.username}}/.config/i3/config
+    - name: /home/{{ config.username}}/.config/i3/config
     - requires:
       - file: i3-autolayout-script
-    - source: salt://files/i3/config
+    - source: salt://files/desktop/i3/config
     - mode: 644
-    - user: {{ config.dom0_user.username }}
-    - group: {{ config.dom0_user.group }}
+    - user: {{ config.username }}
+    - group: {{ config.group }}
 
 i3-autolayout-script:
   file.managed:
-    - name: /home/{{ config.dom0_user.username }}/.local/bin/i3-autolayout.py
+    - name: /home/{{ config.username }}/.local/bin/i3-autolayout.py
     - requires:
       - cmd: i3-autolayout-install-deps
-    - source: salt://files/i3/i3-autolayout.py
+    - source: salt://files/desktop/i3/i3-autolayout.py
     - mode: 755
-    - user: {{ config.dom0_user.username }}
-    - group: {{ config.dom0_user.group }}
+    - user: {{ config.username }}
+    - group: {{ config.group }}
 
 # TODO: Come up with a better way to manage these dependencies. Remember that
 # dom0 intentionally cannot connect to the internet.
 i3-autolayout-install-deps:
   file.recurse:
     - name: /tmp/i3-autolayout-deps
-    - source: salt://files/i3/i3-autolayout-deps
+    - source: salt://files/desktop/i3/i3-autolayout-deps
   cmd.wait:
     - name: pip3 install --user *.whl
     - cwd: /tmp/i3-autolayout-deps
-    - runas: {{ config.dom0_user.username }}
+    - runas: {{ config.username }}
     - watch:
       - file: i3-autolayout-install-deps
 
@@ -68,9 +68,9 @@ rofi:
 
 rofi-config:
   file.recurse:
-    - name: /home/{{ config.dom0_user.username}}/.config/rofi/
-    - source: salt://files/rofi
+    - name: /home/{{ config.username}}/.config/rofi/
+    - source: salt://files/desktop/rofi
     - dir_mode: 755
     - file_mode: 644
-    - user: {{ config.dom0_user.username }}
-    - group: {{ config.dom0_user.group }}
+    - user: {{ config.username }}
+    - group: {{ config.group }}

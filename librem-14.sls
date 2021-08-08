@@ -1,6 +1,6 @@
 /usr/src/librem_ec_acpi-1.0.0:
   file.recurse:
-    - source: salt://files/librem_ec_acpi-1.0.0
+    - source: salt://files/librem-14/librem_ec_acpi-1.0.0
     - dir_mode: 755
     - file_mode: 644
     - user: root
