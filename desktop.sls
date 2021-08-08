@@ -19,6 +19,12 @@ trackpad-config:
     - user: root
     - group: root
 
+secure-copy-paste-sequence:
+  file.replace:
+    - name: /etc/qubes/guid.conf
+    - pattern: '#?secure_(copy|paste)_sequence = "Ctrl-Shift-(c|v)";'
+    - repl: 'secure_\1_sequence = "Mod4-Ctrl-Shift-\2";'
+
 qubes-repo-contrib:
   pkg.installed: []
 
