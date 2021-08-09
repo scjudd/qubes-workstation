@@ -1,5 +1,3 @@
-{% import_yaml "config.yaml" as config %}
-
 ~/.vimrc:
   file.managed:
     - name: /home/user/.vimrc

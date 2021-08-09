@@ -1,5 +1,3 @@
-{% import_yaml "config.yaml" as config %}
-
 ~/.gnupg/gpg-agent.conf:
   file.managed:
     - name: /home/user/.gnupg/gpg-agent.conf

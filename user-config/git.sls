@@ -1,5 +1,3 @@
-{% import_yaml "config.yaml" as config %}
-
 ~/.gitconfig:
   file.managed:
     - name: /home/user/.gitconfig
