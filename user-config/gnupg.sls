@@ -2,6 +2,7 @@
   file.managed:
     - name: /home/user/.gnupg/gpg-agent.conf
     - source: salt://user-config/files/gnupg/gpg-agent.conf
+    - makedirs: true
     - mode: 644
     - user: user
     - group: user
@@ -10,6 +11,7 @@
   file.symlink:
     - name: /home/user/.config/systemd/user/sockets.target.wants/gpg-agent-ssh.socket
     - target: /usr/lib/systemd/user/gpg-agent-ssh.socket
+    - makedirs: true
 
 export SSH_AUTH_SOCK:
   file.replace:
