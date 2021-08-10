@@ -42,6 +42,15 @@ sudo qubes-dom0-update --action=reinstall qubes-template-fedora-32
 ```
 
 
+## Running a specific state against a specific target Qube
+
+A state may be applied to a given Qube, regardless of whether or not it is listed in the `top.sls` file. For example, to apply the `user-config` state to the `personal-dev` Qube:
+
+```bash
+qubesctl --skip-dom0 --show-output --target personal-dev user-config saltenv=user
+```
+
+
 ## Librem 14 troubleshooting
 
 To get the Librem 14 to consistently charge correctly, I had to flash a newer EC firmware and install the librem-ec-acpi kernel module with DKMS.
