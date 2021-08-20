@@ -2,7 +2,6 @@
 user:
   dom0:
     - desktop
-    - librem-14
     - qubes
   fedora-32:
     - template-common

@@ -51,9 +51,18 @@ qubesctl --skip-dom0 --show-output --target personal-dev user-config saltenv=use
 ```
 
 
-## Librem 14 troubleshooting
+## Librem 14 specifics
 
 To get the Librem 14 to consistently charge correctly, I had to flash a newer EC firmware and install the librem-ec-acpi kernel module with DKMS.
+
+
+### Enable the Librem 14 top file
+
+PureOS includes a Librem 14 EC ACPI DKMS module which solves a number of suspend/resume and charging issues. To do the same on Qubes, we must build the DKMS module ourselves. This, along with any other Librem 14-specific configuration, can be enabled like so:
+
+```bash
+sudo qubectl top.enable librem-14
+```
 
 
 ### Flashing the EC firmware
@@ -76,13 +85,6 @@ After this completes, your machine will shut down. On the next boot you should b
 ```bash
 sudo ./purism_ectool info
 ```
-
-
-### Installing the librem-ec-acpi kernel module
-
-This module is included with PureOS, but it is not currently packaged for Qubes. Besides fixing charging issues (together with the EC firmware update above), it adds a bunch of controls for LEDs and such.
-
-This currently is done automatically for dom0, but can be disabled by commenting out the `- librem-ec-acpi` line in `top.sls`.
 
 
 ### Battery charge controller tuning
