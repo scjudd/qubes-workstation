@@ -51,6 +51,11 @@ qubesctl --skip-dom0 --show-output --target personal-dev user-config saltenv=use
 ```
 
 
+## Enabling individual top files:
+
+Each file ending in `.top` must be individually enabled for the associated salt states to be considered. For `fedora-34`, this can be done via `qubesctl top.enable fedora-34`.
+
+
 ## Librem 14 specifics
 
 To get the Librem 14 to consistently charge correctly, I had to flash a newer EC firmware and install the librem-ec-acpi kernel module with DKMS.
