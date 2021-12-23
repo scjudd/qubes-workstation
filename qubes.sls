@@ -2,7 +2,7 @@ infosec-template:
   qvm.vm:
     - name: infosec
     - clone:
-      - source: fedora-32
+      - source: fedora-34
       - label: black
 
 infosec-dvm:

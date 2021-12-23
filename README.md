@@ -35,10 +35,10 @@ The output from Salt for a given Qube can be found under `/var/log/qubes/mgmt-<q
 
 ## Reinstalling a template
 
-If you have deleted a standard template, or would like to reset it to its default state, you can do so with the `qubes-dom0-update` command. For example, to reset the `fedora-32` template to its default state:
+If you have deleted a standard template, or would like to reset it to its default state, you can do so with the `qubes-dom0-update` command. For example, to reset the `fedora-34` template to its default state:
 
 ```bash
-sudo qubes-dom0-update --action=reinstall qubes-template-fedora-32
+sudo qubes-dom0-update --action=reinstall qubes-template-fedora-34
 ```
 
 
